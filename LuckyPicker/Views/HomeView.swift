@@ -4,6 +4,7 @@ struct HomeView: View {
     @EnvironmentObject var optionsManager: OptionsManager
     @State private var showResultView = false
     @State private var selectedOption: Option?
+    @State private var triggerSpin = false
     
     var body: some View {
         NavigationView {
@@ -15,8 +16,10 @@ struct HomeView: View {
                 
                 Spacer()
                 
+                // 使用修改后的WheelView组件
                 WheelView(
                     options: $optionsManager.options,
+                    triggerSpin: $triggerSpin,
                     onSpinEnd: { option in
                         selectedOption = option
                         optionsManager.addToHistory(result: option)
@@ -26,7 +29,8 @@ struct HomeView: View {
                 .padding()
                 
                 Button(action: {
-                    // 转盘视图内部已经处理了旋转逻辑
+                    // 触发转盘旋转
+                    triggerSpin = true
                 }) {
                     Text("开始选择")
                         .font(.headline)

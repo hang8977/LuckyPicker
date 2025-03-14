@@ -8,12 +8,14 @@ struct AddOptionView: View {
     
     var body: some View {
         VStack {
+            // 自定义导航栏，使用更美观的方式
             HStack {
                 Button(action: {
                     presentationMode.wrappedValue.dismiss()
                 }) {
-                    Text("返回")
+                    Image(systemName: "chevron.left")
                         .foregroundColor(.blue)
+                        .imageScale(.large)
                 }
                 
                 Spacer()
@@ -58,14 +60,27 @@ struct AddOptionView: View {
             List {
                 ForEach(optionsManager.options) { option in
                     HStack {
+                        // 增大颜色块尺寸并添加边框
                         Circle()
                             .fill(Color(hex: option.color))
-                            .frame(width: 20, height: 20)
+                            .frame(width: 30, height: 30)
+                            .overlay(
+                                Circle()
+                                    .stroke(Color.gray, lineWidth: 1)
+                            )
+                            .shadow(radius: 1)
                         
                         Text(option.text)
                             .padding(.leading, 8)
+                            .font(.system(size: 16, weight: .medium))
                         
                         Spacer()
+                        
+                        // 显示颜色名称（可选）
+                        Text(colorName(for: option.color))
+                            .font(.caption)
+                            .foregroundColor(.gray)
+                            .padding(.trailing, 8)
                         
                         Button(action: {
                             // 删除选项
@@ -76,6 +91,7 @@ struct AddOptionView: View {
                         }) {
                             Image(systemName: "xmark.circle.fill")
                                 .foregroundColor(.red)
+                                .font(.system(size: 20))
                         }
                     }
                     .padding(.vertical, 8)
@@ -109,6 +125,25 @@ struct AddOptionView: View {
         }
         .onAppear {
             options = optionsManager.options
+        }
+        // 隐藏系统导航栏的返回按钮，使用我们自定义的导航栏
+        .navigationBarHidden(true)
+    }
+    
+    // 根据颜色十六进制值返回颜色名称
+    private func colorName(for hexColor: String) -> String {
+        switch hexColor {
+        case "#FF4136": return "红色"
+        case "#0074D9": return "蓝色"
+        case "#2ECC40": return "绿色"
+        case "#FFDC00": return "黄色"
+        case "#FF851B": return "橙色"
+        case "#B10DC9": return "紫色"
+        case "#01FF70": return "亮绿"
+        case "#F012BE": return "粉色"
+        case "#39CCCC": return "青色"
+        case "#85144b": return "深红"
+        default: return ""
         }
     }
 } 

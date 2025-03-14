@@ -45,23 +45,33 @@ extension Color {
     
     static var randomBright: Color {
         let availableColors = [
-            Color(hex: "#FF69B4"), // 粉红色
-            Color(hex: "#6A5ACD"), // 蓝紫色
-            Color(hex: "#9370DB"), // 中等紫色
-            Color(hex: "#4169E1"), // 皇家蓝
-            Color(hex: "#FF6347")  // 番茄色
+            Color(hex: "#FF4136"), // 鲜红色
+            Color(hex: "#0074D9"), // 鲜蓝色
+            Color(hex: "#2ECC40"), // 鲜绿色
+            Color(hex: "#FFDC00"), // 鲜黄色
+            Color(hex: "#FF851B"), // 橙色
+            Color(hex: "#B10DC9"), // 紫色
+            Color(hex: "#01FF70"), // 亮绿色
+            Color(hex: "#F012BE"), // 粉色
+            Color(hex: "#39CCCC"), // 青色
+            Color(hex: "#85144b")  // 深红色
         ]
         return availableColors.randomElement() ?? .blue
     }
     
     static var randomHexString: String {
         let availableColors = [
-            "#FF69B4", // 粉红色
-            "#6A5ACD", // 蓝紫色
-            "#9370DB", // 中等紫色
-            "#4169E1", // 皇家蓝
-            "#FF6347"  // 番茄色
+            "#FF4136", // 鲜红色
+            "#0074D9", // 鲜蓝色
+            "#2ECC40", // 鲜绿色
+            "#FFDC00", // 鲜黄色
+            "#FF851B", // 橙色
+            "#B10DC9", // 紫色
+            "#01FF70", // 亮绿色
+            "#F012BE", // 粉色
+            "#39CCCC", // 青色
+            "#85144b"  // 深红色
         ]
-        return availableColors.randomElement() ?? "#4169E1"
+        return availableColors.randomElement() ?? "#0074D9"
     }
 } 

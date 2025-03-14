@@ -74,13 +74,13 @@ class OptionsManager: ObservableObject {
            let decoded = try? JSONDecoder().decode([Option].self, from: data) {
             options = decoded
         } else {
-            // 默认选项
+            // 默认选项，使用新的颜色方案
             options = [
-                Option(text: "火锅", color: "#FF69B4"),
-                Option(text: "寿司", color: "#6A5ACD"),
-                Option(text: "披萨", color: "#9370DB"),
-                Option(text: "汉堡", color: "#FF69B4"),
-                Option(text: "炒饭", color: "#6A5ACD")
+                Option(text: "火锅", color: "#FF4136"),  // 鲜红色
+                Option(text: "寿司", color: "#0074D9"),  // 鲜蓝色
+                Option(text: "披萨", color: "#2ECC40"),  // 鲜绿色
+                Option(text: "汉堡", color: "#FFDC00"),  // 鲜黄色
+                Option(text: "炒饭", color: "#B10DC9")   // 紫色
             ]
         }
     }
