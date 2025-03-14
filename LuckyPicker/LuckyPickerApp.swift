@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct LuckyPickerApp: App {
+    @StateObject private var optionsManager = OptionsManager()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(optionsManager)
         }
     }
 }
