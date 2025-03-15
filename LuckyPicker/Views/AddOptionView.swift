@@ -43,7 +43,10 @@ struct AddOptionView: View {
                 
                 Button(action: {
                     if !optionText.isEmpty {
-                        let newOption = Option(text: optionText, color: Color.randomHexString)
+                        // 使用uniqueHexString方法生成不同的颜色
+                        let existingColors = optionsManager.options.map { $0.color }
+                        let newColor = Color.uniqueHexString(existingColors: existingColors)
+                        let newOption = Option(text: optionText, color: newColor)
                         optionsManager.addOption(newOption)
                         options = optionsManager.options
                         optionText = ""
@@ -101,7 +104,10 @@ struct AddOptionView: View {
             // 添加新选项按钮
             Button(action: {
                 if !optionText.isEmpty {
-                    let newOption = Option(text: optionText, color: Color.randomHexString)
+                    // 使用uniqueHexString方法生成不同的颜色
+                    let existingColors = optionsManager.options.map { $0.color }
+                    let newColor = Color.uniqueHexString(existingColors: existingColors)
+                    let newOption = Option(text: optionText, color: newColor)
                     optionsManager.addOption(newOption)
                     options = optionsManager.options
                     optionText = ""

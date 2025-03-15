@@ -74,4 +74,37 @@ extension Color {
         ]
         return availableColors.randomElement() ?? "#0074D9"
     }
+    
+    // 新增方法：根据已有选项的颜色生成不同的颜色
+    static func uniqueHexString(existingColors: [String]) -> String {
+        let availableColors = [
+            "#FF4136", // 鲜红色
+            "#0074D9", // 鲜蓝色
+            "#2ECC40", // 鲜绿色
+            "#FFDC00", // 鲜黄色
+            "#FF851B", // 橙色
+            "#B10DC9", // 紫色
+            "#01FF70", // 亮绿色
+            "#F012BE", // 粉色
+            "#39CCCC", // 青色
+            "#85144b"  // 深红色
+        ]
+        
+        // 过滤掉已经使用的颜色
+        var unusedColors = availableColors.filter { !existingColors.contains($0) }
+        
+        // 如果所有颜色都已使用，则返回一个随机颜色
+        if unusedColors.isEmpty {
+            // 生成一个与最后一个颜色不同的随机颜色
+            var randomColor: String
+            repeat {
+                randomColor = availableColors.randomElement() ?? "#0074D9"
+            } while !existingColors.isEmpty && randomColor == existingColors.last
+            
+            return randomColor
+        }
+        
+        // 返回一个未使用的颜色
+        return unusedColors.randomElement() ?? "#0074D9"
+    }
 } 
