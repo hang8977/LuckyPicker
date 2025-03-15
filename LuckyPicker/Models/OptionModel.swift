@@ -33,12 +33,14 @@ class OptionsManager: ObservableObject {
     func addOption(_ option: Option) {
         options.append(option)
         saveOptions()
+        resetSelectionCounts()
     }
     
     func removeOption(at index: Int) {
         if index >= 0 && index < options.count {
             options.remove(at: index)
             saveOptions()
+            resetSelectionCounts()
         }
     }
     
@@ -99,5 +101,9 @@ class OptionsManager: ObservableObject {
            let decoded = try? JSONDecoder().decode([HistoryRecord].self, from: data) {
             history = decoded
         }
+    }
+    
+    func resetSelectionCounts() {
+        UserDefaults.standard.removeObject(forKey: "optionSelectionCounts")
     }
 } 
