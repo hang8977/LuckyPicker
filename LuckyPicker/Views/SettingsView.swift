@@ -4,7 +4,6 @@ struct SettingsView: View {
     @AppStorage("soundEnabled") private var soundEnabled = true
     @AppStorage("vibrationEnabled") private var vibrationEnabled = true
     @AppStorage("spinDuration") private var spinDuration: Double = 3.0
-    @AppStorage("darkModeEnabled") private var darkModeEnabled = false
     
     var body: some View {
         NavigationView {
@@ -47,22 +46,6 @@ struct SettingsView: View {
                                 .labelsHidden()
                         }
                         .padding(.vertical, 8)
-                        
-                        // 深色模式
-                        HStack {
-                            Image(systemName: "moon.fill")
-                                .foregroundColor(.blue)
-                                .frame(width: 30)
-                            
-                            Text("深色模式")
-                                .padding(.leading, 8)
-                            
-                            Spacer()
-                            
-                            Toggle("", isOn: $darkModeEnabled)
-                                .labelsHidden()
-                        }
-                        .padding(.vertical, 8)
                     }
                     
                     Section(header: Text("高级功能")) {
@@ -80,32 +63,6 @@ struct SettingsView: View {
                                 
                                 Text("\(String(format: "%.1f", spinDuration))秒")
                                     .foregroundColor(.gray)
-                            }
-                        }
-                        .padding(.vertical, 8)
-                        
-                        // 数据导出
-                        NavigationLink(destination: DataExportView()) {
-                            HStack {
-                                Image(systemName: "square.and.arrow.up")
-                                    .foregroundColor(.blue)
-                                    .frame(width: 30)
-                                
-                                Text("数据导出")
-                                    .padding(.leading, 8)
-                            }
-                        }
-                        .padding(.vertical, 8)
-                        
-                        // 主题设置
-                        NavigationLink(destination: ThemeSettingsView()) {
-                            HStack {
-                                Image(systemName: "paintpalette")
-                                    .foregroundColor(.blue)
-                                    .frame(width: 30)
-                                
-                                Text("主题设置")
-                                    .padding(.leading, 8)
                             }
                         }
                         .padding(.vertical, 8)
@@ -162,75 +119,5 @@ struct SpinDurationSettingView: View {
         }
         .padding()
         .navigationTitle("转盘旋转时间")
-    }
-}
-
-// 数据导出视图
-struct DataExportView: View {
-    var body: some View {
-        VStack {
-            Text("数据导出")
-                .font(.headline)
-                .padding()
-            
-            Text("此功能允许您导出历史记录和选项数据")
-                .font(.subheadline)
-                .multilineTextAlignment(.center)
-                .padding()
-            
-            Button(action: {
-                // 导出数据的逻辑
-            }) {
-                Text("导出数据")
-                    .font(.headline)
-                    .foregroundColor(.white)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(Color.blue)
-                    .cornerRadius(10)
-            }
-            .padding()
-            
-            Spacer()
-        }
-        .padding()
-        .navigationTitle("数据导出")
-    }
-}
-
-// 主题设置视图
-struct ThemeSettingsView: View {
-    @State private var selectedTheme = 0
-    let themes = ["默认", "暗夜", "自然", "糖果", "海洋"]
-    
-    var body: some View {
-        VStack {
-            Text("主题设置")
-                .font(.headline)
-                .padding()
-            
-            List {
-                ForEach(0..<themes.count, id: \.self) { index in
-                    Button(action: {
-                        selectedTheme = index
-                    }) {
-                        HStack {
-                            Text(themes[index])
-                                .foregroundColor(.primary)
-                            
-                            Spacer()
-                            
-                            if selectedTheme == index {
-                                Image(systemName: "checkmark")
-                                    .foregroundColor(.blue)
-                            }
-                        }
-                    }
-                }
-            }
-            
-            Spacer()
-        }
-        .navigationTitle("主题设置")
     }
 } 

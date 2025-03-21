@@ -76,7 +76,7 @@ struct HistoryView: View {
         
         return optionsManager.history.filter { record in
             calendar.isDate(record.date, inSameDayAs: today)
-        }
+        }.sorted(by: { $0.date > $1.date }) // 按日期降序排列
     }
     
     // 获取昨天的记录
@@ -89,7 +89,7 @@ struct HistoryView: View {
         
         return optionsManager.history.filter { record in
             calendar.isDate(record.date, inSameDayAs: yesterday)
-        }
+        }.sorted(by: { $0.date > $1.date }) // 按日期降序排列
     }
     
     // 获取更早的记录
@@ -102,7 +102,7 @@ struct HistoryView: View {
         
         return optionsManager.history.filter { record in
             record.date < twoDaysAgo
-        }
+        }.sorted(by: { $0.date > $1.date }) // 按日期降序排列
     }
 }
 
