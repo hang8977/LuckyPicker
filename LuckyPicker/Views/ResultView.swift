@@ -169,6 +169,8 @@ struct ResultView: View {
                 .cornerRadius(25)
             }
             
+            // 分享按钮已被注释掉
+            /* 
             // 更新分享按钮
             Button(action: {
                 // 生成分享图片
@@ -232,6 +234,7 @@ struct ResultView: View {
                 .cornerRadius(25)
                 .shadow(color: Color(hex: option.color).opacity(0.3), radius: 5, x: 0, y: 2)
             }
+            */
         }
     }
     

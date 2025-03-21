@@ -15,21 +15,21 @@ struct SettingsView: View {
                 
                 List {
                     Section(header: Text("基本设置")) {
-                        // 声音设置
-                        HStack {
-                            Image(systemName: "speaker.wave.2")
-                                .foregroundColor(.blue)
-                                .frame(width: 30)
+                        // // 声音设置
+                        // HStack {
+                        //     Image(systemName: "speaker.wave.2")
+                        //         .foregroundColor(.blue)
+                        //         .frame(width: 30)
                             
-                            Text("音效")
-                                .padding(.leading, 8)
+                        //     Text("音效")
+                        //         .padding(.leading, 8)
                             
-                            Spacer()
+                        //     Spacer()
                             
-                            Toggle("", isOn: $soundEnabled)
-                                .labelsHidden()
-                        }
-                        .padding(.vertical, 8)
+                        //     Toggle("", isOn: $soundEnabled)
+                        //         .labelsHidden()
+                        // }
+                        // .padding(.vertical, 8)
                         
                         // 震动设置
                         HStack {
@@ -78,7 +78,7 @@ struct SettingsView: View {
                                 .font(.subheadline)
                                 .foregroundColor(.gray)
                             
-                            Text("开发者: ThinkChat Team")
+                            Text("开发者: Hang Hui")
                                 .font(.subheadline)
                                 .foregroundColor(.gray)
                         }
